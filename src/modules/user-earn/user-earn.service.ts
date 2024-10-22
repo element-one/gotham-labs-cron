@@ -104,7 +104,7 @@ export class UserEarnService {
         'userEarn.needToUpload = true AND userEarn.isClaimed = true AND userEarn.uploadErrorTimes < 3',
       )
       .orderBy('userEarn.createdAt', 'ASC')
-      .limit(500);
+      .limit(200);
 
     const userEarns = await queryBuilder.getMany();
     if (userEarns.length === 0) {
