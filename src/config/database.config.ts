@@ -24,7 +24,7 @@ const DatabaseConfig = () => ({
       rejectUnauthorized: false,
     },
   },
-  synchronize: process.env.APP_ENV !== 'prod',
+  synchronize: false,
 });
 
 export default DatabaseConfig;

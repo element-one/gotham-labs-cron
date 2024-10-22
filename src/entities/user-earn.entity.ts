@@ -24,6 +24,12 @@ export class UserEarnEntity extends AbstractEntity {
   @Column({ default: false })
   isAirdropAttempted: boolean;
 
+  @Column({ default: false })
+  needToUpload: boolean;
+
+  @Column({ type: 'int4', default: 0 })
+  uploadErrorTimes: number;
+
   @Column('jsonb', { nullable: false, default: {} })
   answers: JSONObject;
 
