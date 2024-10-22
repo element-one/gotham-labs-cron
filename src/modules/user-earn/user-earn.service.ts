@@ -96,7 +96,7 @@ export class UserEarnService {
     return userEarns;
   }
 
-  @Cron('* */3 * * * *')
+  @Cron('*/3 * * * *')
   async uploadPhoneInfoToRiseServer() {
     const queryBuilder = this.userEarnRepository.createQueryBuilder('userEarn');
     queryBuilder
@@ -104,7 +104,7 @@ export class UserEarnService {
         'userEarn.needToUpload = true AND userEarn.isClaimed = true AND userEarn.uploadErrorTimes < 3',
       )
       .orderBy('userEarn.createdAt', 'ASC')
-      .limit(100);
+      .limit(500);
 
     const userEarns = await queryBuilder.getMany();
     if (userEarns.length === 0) {
