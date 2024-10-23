@@ -1,7 +1,6 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
-import * as Sentry from '@sentry/node';
 import * as session from 'express-session';
 import * as cookieParser from 'cookie-parser';
 
@@ -18,12 +17,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService: ConfigService = app.get(ConfigService);
   const port: number = configService.get<number>('PORT');
-
-  Sentry.init({
-    dsn: configService.get<string>('SENTRY_DSN'),
-    debug: true,
-    environment: configService.get('APP_ENV'),
-  });
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   app.useGlobalInterceptors(new TransformInterceptor());
@@ -45,10 +38,6 @@ async function bootstrap() {
   if (process.env.APP_ENV === 'dev') {
     origin.push('http://localhost:3000');
   }
-  origin.push(process.env.WEB_URL);
-  origin.push('https://www.badbunnyvotingchallenge.com');
-  origin.push('https://dev.wewillriserewards.us');
-  origin.push('https://www.wewillriserewards.us');
 
   const allowedHeaders = ['Accept', 'Content-Type', 'Authorization'];
   if (process.env.APP_ENV === 'dev') {
