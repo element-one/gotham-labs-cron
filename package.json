@@ -45,7 +45,6 @@
     "cookie-parser": "^1.4.6",
     "csv-parse": "^5.3.6",
     "ethers": "^6.6.4",
-    "express-session": "^1.17.3",
     "generate-password": "^1.7.0",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
