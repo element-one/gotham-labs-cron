@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import appConfig from '@config/app.config';
-import { UserEarnModule } from '@modules/user-earn/user-earn.module';
+import { PostDataModule } from '@modules/post-data/post-data.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -18,7 +18,7 @@ import { AppService } from './app.service';
       },
       inject: [ConfigService],
     }),
-    UserEarnModule,
+    PostDataModule,
   ],
   controllers: [AppController],
   providers: [AppService],
