@@ -35,6 +35,7 @@ export class PostDataService {
     const endpointUrl = this.configService.get('RISE_SERVER_ENDPOINT');
     for (const post of posts) {
       try {
+        console.log('uploading', post.data);
         const { firstName, lastName, email, zip, dateOfBirth, phone } =
           post.data;
 
